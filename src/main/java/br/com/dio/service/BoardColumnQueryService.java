@@ -15,7 +15,11 @@ public class BoardColumnQueryService {
 
     public Optional<BoardColumnEntity> findById(final Long id) throws SQLException {
         var dao = new BoardColumnDAO(connection);
-        return dao.findById(id);
+        Optional<BoardColumnEntity> daoo =  dao.findById(id);
+        if (daoo.isEmpty()){
+            throw new RuntimeException("not found");
+        }
+        return daoo;
     }
 
 }
